@@ -20,7 +20,7 @@ Containers
 ```
 kenanduman-db
 kenanduman-php # PHP
-kenanduman-nginx #N ginx Web server
+kenanduman-nginx #Nginx Web server
 kenanduman-elk # Elasticsearch, Kibana
 kenanduman-redis
 ```
