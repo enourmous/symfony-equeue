@@ -37,8 +37,6 @@ ADD symfony.ini /etc/php7/cli/conf.d/
 
 ADD symfony.pool.conf /etc/php7/php-fpm.d/
 
-RUN cd /var/www/symfony; composer update
-
 CMD ["php-fpm7", "-F"]
 
 WORKDIR /var/www/symfony

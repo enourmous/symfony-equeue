@@ -4,7 +4,7 @@ services:
         container_name: kenanduman-db
         image: mysql
         ports:
-            - "8887:3306"
+            - "8888:3306"
         environment:
             MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: symfony
@@ -14,13 +14,13 @@ services:
         container_name: kenanduman-php
         build: ./php-fpm
         ports:
-            - "8888:9000"
+            - "8890:9000"
         volumes:
             - ./symfony:/var/www/symfony:cached
             - ./logs/symfony:/var/www/symfony/var/logs:cached
         links:
             - db
-        command: composer update
+#        command: composer update
     nginx:
         container_name: kenanduman-nginx
         build: ./nginx
