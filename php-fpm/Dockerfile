@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-LABEL maintainer="Vincent Composieux <vincent.composieux@gmail.com>"
+LABEL maintainer="Kenan Duman <kenanduman1988@gmail.com>"
 
 RUN apk add --update \
     php7-fpm \
@@ -36,6 +36,8 @@ ADD symfony.ini /etc/php7/php-fpm.d/
 ADD symfony.ini /etc/php7/cli/conf.d/
 
 ADD symfony.pool.conf /etc/php7/php-fpm.d/
+
+RUN cd /var/www/symfony; composer update
 
 CMD ["php-fpm7", "-F"]
 

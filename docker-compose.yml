@@ -20,6 +20,7 @@ services:
             - ./logs/symfony:/var/www/symfony/var/logs:cached
         links:
             - db
+        command: composer update
     nginx:
         container_name: kenanduman-nginx
         build: ./nginx

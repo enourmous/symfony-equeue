@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-MAINTAINER Vincent Composieux <vincent.composieux@gmail.com>
+MAINTAINER Kenan Duman <kenanduman1988@gmail.com>
 
 RUN apk add --update nginx
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
