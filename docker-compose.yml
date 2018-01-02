@@ -1,0 +1,49 @@
+version: '2'
+services:
+    db:
+        container_name: kenanduman-db
+        image: mysql
+        ports:
+            - "8887:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
+    php:
+        container_name: kenanduman-php
+        build: ./php-fpm
+        ports:
+            - "8888:9000"
+        volumes:
+            - ./symfony:/var/www/symfony:cached
+            - ./logs/symfony:/var/www/symfony/var/logs:cached
+        links:
+            - db
+    nginx:
+        container_name: kenanduman-nginx
+        build: ./nginx
+        ports:
+            - "8880:80"
+        links:
+            - php
+        volumes_from:
+            - php
+        volumes:
+            - ./logs/nginx/:/var/log/nginx:cached
+    elk:
+        container_name: kenanduman-elk
+        image: willdurand/elk
+        ports:
+            - "8881:80"
+        volumes:
+            - ./elk/logstash:/etc/logstash:cached
+            - ./elk/logstash/patterns:/opt/logstash/patterns:cached
+        volumes_from:
+            - php
+            - nginx
+    redis:
+        container_name: kenanduman-redis
+        image: redis:alpine
+        ports:
+            - "8889:6379"
