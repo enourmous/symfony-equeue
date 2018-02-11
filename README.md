@@ -1,6 +1,6 @@
-symfony-equeue (Test Task)
+symfony-equeue
 ==============
-This project is test task for Stfalcon Company. 
+This project for test issues. 
 Symfony version 4, storage used REDIS.
 
 Add to host file
